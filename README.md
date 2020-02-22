@@ -3,14 +3,24 @@
 ## 组件路径
 ` src/components/baiduMap `
 ## Data属性
-| 属性 | 格式 | 介绍 |
-| ------ | ------ | ------ |
-| list: {
+| 参数 | 说明 | 格式 | 值 |
+| ------ | ------ | ------ | ------ |
+| list| 地图默认经纬度与地址 | Object | `address`(传入地址), `longitude`和`latitude`经纬度 |
+
+例子：
+````
+ list: {
         address: null,
         longitude: null,
         latitude: null
-      } | Object | address(传入地址), longitude和latitude经纬度 |
-| 稍微长一点的文本 | 短文本 | 中等文本 |
+      }
+````
+## 方法
+| 方法名称 | 说明 | 参数 |
+| ------ | ------ | ------ |
+| msg| 点击地图获取到的数据 | 点击地图获取到的数据 |
+
+
 ## Project setup
 ```
 npm install
