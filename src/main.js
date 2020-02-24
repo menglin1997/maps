@@ -21,6 +21,10 @@ Vue.use(vueLoading)
 Vue.config.productionTip = false
 require('es6-promise').polyfill()
 Es6Promise.polyfill()
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+
+Vue.use(ElementUI)
 
 /* eslint-disable no-new */
 new Vue({

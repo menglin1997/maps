@@ -21,15 +21,19 @@
 </div></template>
 
 <script>
-var map
+var map, marker
 import BaiduMap from './map.js'
 export default {
   name: 'AddNews',
   props: {
     list: {
       type: Object,
-      default: {
-        address: null
+      default: function() {
+        return {
+          address: null,
+          longitude: null,
+          latitude: null
+        }
       }
     }
   },
@@ -59,7 +63,12 @@ export default {
   watch: {
     list(val) {
       console.log(val, 'vas')
+      marker = ''
       map.centerAndZoom(new BMap.Point(val.longitude, val.latitude), 11)
+      marker = new BMap.Marker(
+        new BMap.Point(this.list.longitude, this.list.latitude)
+      )
+      map.addOverlay(marker)
     }
   },
   created() {
@@ -72,7 +81,7 @@ export default {
         var this_ = this
         BaiduMap.init().then(BMap => {
           map = new BMap.Map('bmap', { enableMapClick: true })
-          let marker = ''
+          marker = ''
           var geolocation = new BMap.Geolocation()
           setTimeout(() => {
             console.log(this_.list, 'this_.list')

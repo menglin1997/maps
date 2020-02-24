@@ -4,11 +4,11 @@
       百度地图
 
     </div>
-    <div>
+    <div @click="toMap('/tengxun')">
       腾讯地图
 
     </div>
-    <div>
+    <div @click="toMap('/gaode')">
       高德地图
     </div>
   </div>

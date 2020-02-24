@@ -19,6 +19,18 @@ const router = new Router({
       component: () => import('@/views/baidu')
     },
     {
+      path: '/tengxun',
+      name: 'Tengxun',
+      meta: '腾讯地图',
+      component: () => import('@/views/tengxun')
+    },
+    {
+      path: '/gaode',
+      name: 'Gaode',
+      meta: '高德地图',
+      component: () => import('@/views/gaode')
+    },
+    {
       path: '/',
       name: '',
       redirect: '/begin'
