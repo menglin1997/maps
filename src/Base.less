@@ -1,0 +1,333 @@
+@themscolor: #00b36a; // 主题颜色
+@themscolor2: rgba(68, 134, 245, 1); // 主题颜色
+@thems_warningcolor: #fb9826; // 主题警示颜色
+@btns_text: #ffffff; // 按钮字体颜色
+@thems_text: #666666; // 不重要描述行文字颜色
+@thems_texttwo: #999999; // 不重要描述行文字颜色
+@thems_goleft: #d1d1d1; // 不重要描述行文字颜色
+
+@header_textheight: 60px;
+@header_textsize: 26px;
+@header_bgccolr: rgba(255, 255, 255, 1);
+
+@card_title: #eff0ef;
+@card_back: #fff;
+@card_desc_text: rgba(102, 102, 102, 1);
+@card_borde_dashed: 2px dashed #efefef;
+
+@dialog_btn_top_border: 2px solid #efefef;
+@dialog_btn_border_color: #e4e4e4;
+* {
+  touch-action: none;
+}
+
+.jc_btns {
+  border: none;
+  background: @themscolor;
+  color: @btns_text;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 36px;
+  height: 88px;
+}
+
+.bgwing {
+  background: @thems_warningcolor !important;
+}
+
+.nohave {
+  width: 65%;
+  text-align: center;
+  margin: 100px auto;
+  img {
+    width: 100%;
+  }
+  p {
+    color: @thems_texttwo;
+    font-size: 32px;
+  }
+  .boxs {
+    width: 100%;
+    height: 12vh;
+    margin-top: 40px;
+    background: #fff;
+    border-radius: 15px;
+    line-height: 6vh;
+    padding: 10px 0;
+    p {
+      color: @themscolor;
+      font-size: 36px;
+      font-weight: 900;
+    }
+    small {
+      color: @thems_texttwo;
+    }
+  }
+  .boxss {
+    width: 100%;
+    height: 12vh;
+    margin-top: 20px;
+    background: #fff;
+    line-height: 6vh;
+    border-radius: 15px;
+    padding: 10px 0;
+    p {
+      font-size: 36px;
+      font-weight: 900;
+    }
+    small {
+      color: @thems_texttwo;
+    }
+  }
+}
+
+// 底部弹窗
+.db_content {
+  background: @header_bgccolr;
+  @height: 87px;
+  position: relative;
+  p {
+    padding: 0 20px;
+  }
+  .title {
+    font-size: 33px;
+    height: @height;
+    line-height: @height;
+    border-bottom: @dialog_btn_top_border;
+  }
+  .money {
+    height: @height;
+    line-height: @height;
+    font-size: 28px;
+    text-align: left;
+    // border-bottom: @dialog_btn_top_border;
+    // border-top: @dialog_btn_top_border;
+    span {
+      float: right;
+    }
+  }
+  .tishi {
+    font-weight: 600;
+    color: @thems_warningcolor;
+    font-size: 28px;
+    text-align: left;
+  }
+  .box {
+    @boredr_color: rgba(0, 0, 0, 0.2);
+    @box-height: 52px;
+    @smallbox-height: 22px;
+    height: 345px;
+    line-height: 345px;
+    color: @themscolor;
+    font-weight: 700;
+    p {
+      font-size: 96px;
+      animation: rotate 2s linear infinite;
+    }
+  }
+  .useragreement {
+    height: @height;
+    line-height: @height;
+    font-size: 24px;
+    color: @thems_text;
+    text-align: left;
+    vertical-align: middle;
+    input {
+      vertical-align: middle;
+      width: 25px;
+      height: 25px;
+      line-height: 25px;
+    }
+  }
+  button {
+    width: 701px;
+    height: 88px;
+    background: rgba(68, 134, 245, 1);
+    border-radius: 5px;
+    margin-bottom: 100px;
+  }
+  // 关闭按钮
+  i {
+    position: absolute;
+    top: -70px;
+    right: 20px;
+    font-size: 40px;
+    color: @btns_text;
+  }
+}
+
+// 随机箱子动画
+@keyframes rotates {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateY(20px) scale(1.1, 0.9);
+  }
+  75% {
+    ransform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+//  弹窗字体动画
+@keyframes rotate {
+  0% {
+    transform: scale(1); /*开始为原始大小*/
+  }
+  25% {
+    transform: scale(1.5); /*放大1.1倍*/
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.5);
+  }
+}
+
+// 选择是否框框
+
+.dialog_con {
+  background: #fff;
+  border-radius: 10px 10px 0 0;
+  i {
+    display: block;
+    margin: 0 auto;
+    font-size: 120px;
+    width: 100%;
+    height: 150px;
+    opacity: 0.25;
+  }
+  p {
+    height: 100px;
+    line-height: 100px;
+    font-size: 32px;
+    span {
+      color: @thems_warningcolor;
+    }
+  }
+  .btns {
+    border-top: @dialog_btn_top_border;
+    font-size: 32px;
+    border-radius: 0 0 10px 10px;
+    button {
+      font-size: 32px;
+      width: 50%;
+      float: left;
+      height: 88px;
+      border: none;
+      background: @btns_text;
+      &:nth-child(1) {
+        border-radius: 0 0 0 10px;
+      }
+      &:nth-child(2) {
+        color: @thems_warningcolor;
+        border-left: 1px solid @dialog_btn_border_color;
+        border-radius: 0 0 10px 0;
+      }
+    }
+  }
+}
+
+// 设备离线
+
+.overoder {
+  background: #fff;
+  border-radius: 10px;
+  padding-bottom: 50px;
+  p.title {
+    @height: 80px;
+    height: @height;
+    line-height: @height;
+    border-radius: 10px 10px 0 0;
+    background: @card_title;
+    font-size: 30px;
+    position: relative;
+    i {
+      position: absolute;
+      right: 30px;
+      font-size: 40px;
+    }
+  }
+  div {
+    img {
+      height: 120px;
+      margin: 30px;
+    }
+    p {
+      font-size: 32px;
+    }
+  }
+  p {
+    margin-bottom: 30px;
+  }
+  .btns {
+    border-top: @dialog_btn_top_border;
+    font-size: 32px;
+    border-radius: 0 0 10px 10px;
+    button {
+      width: 100%;
+      float: left;
+      height: 88px;
+      border: none;
+      background: @btns_text;
+      color: @thems_warningcolor;
+      border-radius: 0 0 10px 10px;
+    }
+  }
+}
+
+.dialog_con {
+  button.okbut {
+    width: 100%;
+    float: left;
+    height: 88px;
+    border: none;
+    background: @btns_text;
+    color: @thems_warningcolor;
+    border-radius: 0 0 10px 10px;
+  }
+}
+
+input {
+  -web-kit-appearance: none;
+  -moz-appearance: none;
+  font-size: 1.4em;
+  height: 2.7em;
+  border-radius: 4px;
+  border: 1px solid #c8cccf;
+  color: #6a6f77;
+  outline: none;
+  // line-height: 2.7em;
+}
+
+.input_control {
+  width: 360px;
+  margin: 20px auto;
+}
+input[type='text'],
+#btn1,
+#btn2 {
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1.4em;
+  height: 2.7em;
+  border-radius: 4px;
+  border: 1px solid #c8cccf;
+  color: #6a6f77;
+  -web-kit-appearance: none;
+  -moz-appearance: none;
+  // display: block;
+  outline: none;
+  padding: 0 1em;
+  text-decoration: none;
+  width: 100%;
+}
+input[type='text']:focus {
+  border: 1px solid #ff7496;
+}

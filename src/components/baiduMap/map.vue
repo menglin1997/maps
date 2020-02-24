@@ -1,73 +1,92 @@
 <template>
   <div class="filter-container">
+
     <div id="bmap" />
+    <div id="r-result" style="margin-top: 20px;">
+
       <div id="r-result" style="margin-top: 20px;">
         请搜索您的地址:
-        <el-input type="text"  placeholder="请搜索您的地址" clearable prefix-icon="el-icon-search" id="suggestId" v-model="mapSearchVal" size="20" value="" style="width:200px;margin-left: 10px;">
-
-      </div>
-      <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;">
-      </div>
-  </div>
-</template>
+        <input
+          id="suggestId"
+          v-model="mapSearchVal"
+          type="text"
+          placeholder="请搜索您的地址"
+          clearable
+          prefix-icon="el-icon-search"
+          size="20"
+          value=""
+          style="width:200px;margin-left: 10px;" ></div>
+      <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"/>
+    </div>
+</div></template>
 
 <script>
+var map
 import BaiduMap from './map.js'
 export default {
   name: 'AddNews',
-
-  data () {
-    
-    return {
-      mapSearchVal: null,
-      
-      address: null, // 省市区拼接
-     
-     
-      list: {
-        addressCode: '', // 省市区中午拼接
-        address: '',
-        businessName: '',
-        city: 0,
-        district: 0,
-        province: 0,
-        landlineTelephone: '',
-        latitude: 0,
-        linkMan: '',
-        longitude: 0,
-        phoneNumber: '',
-
-        businessId: null
+  props: {
+    list: {
+      type: Object,
+      default: {
+        address: null
       }
     }
   },
-  created() {
-      this.getMap()
-    
+  data() {
+    return {
+      mapSearchVal: null,
+
+      address: null // 省市区拼接
+
+      // list: {
+      //   addressCode: '', // 省市区中午拼接
+      //   address: '',
+      //   businessName: '',
+      //   city: 0,
+      //   district: 0,
+      //   province: 0,
+      //   landlineTelephone: '',
+      //   latitude: 0,
+      //   linkMan: '',
+      //   longitude: 0,
+      //   phoneNumber: '',
+
+      //   businessId: null
+      // }
+    }
   },
- 
+  watch: {
+    list(val) {
+      console.log(val, 'vas')
+      map.centerAndZoom(new BMap.Point(val.longitude, val.latitude), 11)
+    }
+  },
+  created() {
+    this.getMap()
+  },
+
   methods: {
-    getMap () {
-      this.$nextTick(function () {
+    getMap() {
+      this.$nextTick(function() {
         var this_ = this
         BaiduMap.init().then(BMap => {
-          console.log(BMap, 'BMAP')
-          const map = new BMap.Map('bmap', { enableMapClick: true })
+          map = new BMap.Map('bmap', { enableMapClick: true })
           let marker = ''
           var geolocation = new BMap.Geolocation()
-
           setTimeout(() => {
+            console.log(this_.list, 'this_.list')
             if (
               this_.list.address &&
               this_.list.longitude !== 0 &&
               this_.list.latitude !== 0
-        ) {
+            ) {
               map.centerAndZoom(new BMap.Point(this_.list.longitude, this_.list.latitude), 11)
               marker = new BMap.Marker(
-              new BMap.Point(this_.list.longitude, this_.list.latitude)
-          )
+                new BMap.Point(this_.list.longitude, this_.list.latitude)
+              )
             } else {
-              geolocation.getCurrentPosition(function (c) {
+              geolocation.getCurrentPosition(function(c) {
                 if (this.getStatus() === 0) {
                   map.centerAndZoom(c.address.city, 11)
                 } else {
@@ -89,13 +108,14 @@ export default {
           map.addOverlay(marker)
           map.enableScrollWheelZoom(true)
           var geoc = new BMap.Geocoder()
-          map.addEventListener('click', function (e) {
+          map.addEventListener('click', function(e) {
             map.clearOverlays()
             if (!this_.list) {
               this_.list = {}
             }
-            geoc.getLocation(e.point, function (rs) {
+            geoc.getLocation(e.point, function(rs) {
               console.log(rs, '获取到的')
+              this_.$emit('msg', rs)
               var addComp = rs.addressComponents
               this_.list.longitude = e.point.lng
               this_.list.latitude = e.point.lat
@@ -107,21 +127,22 @@ export default {
             })
           })
           // 建立一个自动完成的对象
-          var ac = new BMap.Autocomplete({'input': 'suggestId', 'location': map})
+          var ac = new BMap.Autocomplete({ 'input': 'suggestId', 'location': map })
+          console.log(ac, 'ac')
           var myValue
-          ac.addEventListener('onconfirm', function (e) {    // 鼠标点击下拉列表后的事件
+          ac.addEventListener('onconfirm', function(e) { // 鼠标点击下拉列表后的事件
             var _value = e.item.value
             myValue = _value.province + _value.city + _value.district + _value.street + _value.business
             this_.mapSearchVal = myValue
             setPlace()
           })
 
-          function setPlace () {
-            map.clearOverlays()    // 清除地图上所有覆盖物
-            function myFun () {
-              var pp = local.getResults().getPoi(0).point    // 获取第一个智能搜索的结果
+          function setPlace() {
+            map.clearOverlays() // 清除地图上所有覆盖物
+            function myFun() {
+              var pp = local.getResults().getPoi(0).point // 获取第一个智能搜索的结果
               map.centerAndZoom(pp, 18)
-              map.addOverlay(new BMap.Marker(pp))    // 添加标注
+              map.addOverlay(new BMap.Marker(pp)) // 添加标注
             }
             var local = new BMap.LocalSearch(map, { // 智能搜索
               onSearchComplete: myFun
@@ -137,7 +158,7 @@ export default {
 <style>
 #bmap {
   width: 100%;
-  height: 350px;
+  height: 550px;
 }
 .el-form-item__label {
   float: left;
