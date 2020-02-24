@@ -15,6 +15,8 @@
         latitude: null
       }
 ````
+## 图示
+https://github.com/menglin1997/maps/blob/master/static/baidu.png
 ## 方法
 | 方法名称 | 说明 | 参数 |
 | ------ | ------ | ------ |
