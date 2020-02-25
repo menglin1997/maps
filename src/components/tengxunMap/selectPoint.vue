@@ -92,7 +92,7 @@ export default {
       // 设置标签的type属性
       script.type = 'text/javascript'
       // 设置标签的链接地址
-      script.src = 'https://map.qq.com/api/js?v=2.exp&key=LZQBZ-SAQ6F-FB7JI-NTYHN-YYUB5-LWFTV&callback=onMapFileLoad'
+      script.src = 'https://map.qq.com/api/js?v=2.exp&key=你的key值&callback=onMapFileLoad'
       // 添加标签到dom
       document.body.appendChild(script)
     },

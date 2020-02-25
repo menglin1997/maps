@@ -55,7 +55,7 @@ export default {
   },
   mounted() {
     var this_ = this
-    var url = 'https://webapi.amap.com/maps?v=1.4.15&key=d24ccd57302f528796f2780110c9f3da&callback=onLoad'
+    var url = 'https://webapi.amap.com/maps?v=1.4.15&key=你的key值&callback=onLoad'
     var jsapi = document.createElement('script')
     jsapi.charset = 'utf-8'
     jsapi.src = url

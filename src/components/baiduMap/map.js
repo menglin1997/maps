@@ -57,7 +57,7 @@
 export default {
   init: function() {
     // console.log("初始化百度地图脚本...");
-    const AK = 'bmPMX9zxrAM0Q2sllQxZvjycZwQGllrr'
+    const AK = '你的key值'
     const BMap_URL = 'https://api.map.baidu.com/api?v=2.0&ak=' + AK + '&s=1&callback=onBMapCallback'
     return new Promise((resolve) => {
       // 如果已加载直接返回
