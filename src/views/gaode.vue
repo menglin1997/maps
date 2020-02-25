@@ -14,45 +14,46 @@
         lng: {{ lng }}
       </div>
     </div>
-    <baiduMap :list="list" @msg="msg"/>
+    <gaodeMap :commit-from="list" @msg="msg"/>
   </div>
 </template>
 <script>
-import baiduMap from '../components/baiduMap/map.vue'
+import gaodeMap from '../components/gaodeMap/map'
 export default {
   name: 'Gaode',
   components: {
-    baiduMap
+    gaodeMap
   },
   data() {
     return {
       address: null,
       lat: null,
       lng: null,
-      // list: {
-      //   address: '测试定位',
-      //   longitude: '113.662488',
-      //   latitude: '34.755371'
-      // }
       list: {
-        address: null,
-        longitude: null,
-        latitude: null
+        Address: '测试定位',
+        Longitude: '113.662488',
+        Latitude: '34.755371'
       }
+      // list: {
+      //   Address: null,
+      //   Longitude: null,
+      //   Latitude: null
+      // }
     }
   },
+
   methods: {
     msg(msg) {
       console.log(msg, 'msg')
       this.address = msg.address
-      this.lat = msg.point.lat
-      this.lng = msg.point.lng
+      this.lat = msg.lat
+      this.lng = msg.lng
     },
     goZZ() {
       this.list = {
         address: '测试定位',
-        longitude: '113.662488',
-        latitude: '34.755371'
+        Longitude: '113.662488',
+        Latitude: '34.755371'
       }
     }
   }

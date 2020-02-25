@@ -29,16 +29,16 @@ export default {
       address: null,
       lat: null,
       lng: null,
-      // list: {
-      //   address: '测试定位',
-      //   longitude: '113.662488',
-      //   latitude: '34.755371'
-      // }
       list: {
-        address: null,
-        longitude: null,
-        latitude: null
+        address: '测试定位',
+        longitude: '113.662488',
+        latitude: '34.755371'
       }
+      // list: {
+      //   address: null,
+      //   longitude: null,
+      //   latitude: null
+      // }
     }
   },
   methods: {
