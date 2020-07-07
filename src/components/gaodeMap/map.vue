@@ -24,7 +24,7 @@ export default {
       default: function() {
         return {
           // 地图的key
-          key: 'd24ccd57302f528796f2780110c9f3da',
+          key: '',
           zoom: 5, // 地图显示级别
           setMapStyle: '', // 设置自定义个性化地图---将地图生成的链接写入即可如 amap://styles/4df52953371391eb93a57c81b1e633f3
           draggable: false, // 设置标记点是否可以拖拽

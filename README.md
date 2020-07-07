@@ -1,13 +1,47 @@
 # 基于Vue的高德地图、百度地图、腾讯地图
 
-## 待完善功能（下一步将要实现的）
+## 高德地图API
 
-### 高德地图
+````javascript
+// 地图高度
+height: {
+      type: String,
+      default: '300px'
+    },
+// 地图宽度
+    width: {
+      type: String,
+      default: '100%'
+    },
+    // 地图的相关配置
+    options: {
+      type: Object,
+      default: function() {
+        return {
+          // 地图的key
+          key: '',
+          zoom: 5, // 地图显示级别
+          setMapStyle: '', // 设置自定义个性化地图---将地图生成的链接写入即可如 amap://styles/4df52953371391eb93a57c81b1e633f3
+          draggable: false, // 设置标记点是否可以拖拽
+          cursor: 'default', // 设置鼠标放上标记点的效果 用法同css样式cursor
+          raiseOnDrag: false // 设置鼠标拖动效果  在draggable为true时生效
+        }
+      }
+    },
+    // 传入默认经纬度和地址
+    commitFrom: {
+      type: Object,
+      default: function() {
+        return {
+          address: null,
+          longitude: null,
+          latitude: null
+        }
+      }
+    }
+````
 
-- 根据搜索框搜索地址
-- key值变成变量传递
-- 页面经纬度变成输入框 并且可以根据输入的经纬度来找到标记点
-- 标记点不可以拖动
+
 
 
 
