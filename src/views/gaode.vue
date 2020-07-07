@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion:
+ * @version:
+ * @Author: zml
+ * @Date: 2020-07-07 11:24:26
+ * @LastEditors: zml
+ * @LastEditTime: 2020-07-07 14:45:57
+-->
 <template>
   <div>
     <div>
@@ -10,11 +18,14 @@
 
       </div>
       <div>
-        lat: {{ lat }}<br >
-        lng: {{ lng }}
+        lat精度: {{ lat }}<br >
+        <input v-model.number="list.longitude" type="text" @blur="handleChange">
+        lng纬度: {{ lng }}
+        <input v-model.number="list.latitude" type="text" @blur="handleChange">
+        地址查询<input v-model="list.address" type="text" @blur="changeAddress">
       </div>
     </div>
-    <gaodeMap :commit-from="list" @msg="msg"/>
+    <gaodeMap ref="gaode" :commit-from="list" @msg="msg"/>
   </div>
 </template>
 <script>
@@ -26,19 +37,15 @@ export default {
   },
   data() {
     return {
+      gaodeShow: false,
       address: null,
       lat: null,
       lng: null,
       list: {
-        Address: '测试定位',
-        Longitude: '113.662488',
-        Latitude: '34.755371'
+        address: '测试定位',
+        longitude: '113.662488',
+        latitude: '34.755371'
       }
-      // list: {
-      //   Address: null,
-      //   Longitude: null,
-      //   Latitude: null
-      // }
     }
   },
 
@@ -48,6 +55,16 @@ export default {
       this.address = msg.address
       this.lat = msg.lat
       this.lng = msg.lng
+    },
+    // 输入框内容改变
+    handleChange() {
+      console.log(this.list, 'list')
+
+      this.$refs.gaode.addMarker([this.list.longitude, this.list.latitude], false)
+      this.$refs.gaode.writeAddress([this.list.longitude, this.list.latitude])
+    },
+    changeAddress() {
+      this.$refs.gaode.markLocation(this.list.address)
     },
     goZZ() {
       this.list = {
