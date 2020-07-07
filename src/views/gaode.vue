@@ -4,7 +4,7 @@
  * @Author: zml
  * @Date: 2020-07-07 11:24:26
  * @LastEditors: zml
- * @LastEditTime: 2020-07-07 14:45:57
+ * @LastEditTime: 2020-07-07 15:16:13
 -->
 <template>
   <div>
@@ -59,12 +59,16 @@ export default {
     // 输入框内容改变
     handleChange() {
       console.log(this.list, 'list')
-
-      this.$refs.gaode.addMarker([this.list.longitude, this.list.latitude], false)
-      this.$refs.gaode.writeAddress([this.list.longitude, this.list.latitude])
+      if (this.list.longitude && this.list.latitude) {
+        this.$refs.gaode.addMarker([this.list.longitude, this.list.latitude], false)
+        this.$refs.gaode.writeAddress([this.list.longitude, this.list.latitude])
+      }
     },
+    // 地址输入框内容改变
     changeAddress() {
-      this.$refs.gaode.markLocation(this.list.address)
+      if (this.list.address) {
+        this.$refs.gaode.markLocation(this.list.address)
+      }
     },
     goZZ() {
       this.list = {
