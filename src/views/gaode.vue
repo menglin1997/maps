@@ -4,15 +4,19 @@
  * @Author: zml
  * @Date: 2020-07-07 11:24:26
  * @LastEditors: zml
- * @LastEditTime: 2020-07-07 15:16:13
+ * @LastEditTime: 2020-11-17 15:34:02
 -->
 <template>
   <div>
     <div>
-      <h1 style="text-align:center" @click="goZZ">点我定位到郑州市</h1>
+      
+      <!-- <h1 style="text-align:center" @click="goZZ">点我定位到郑州市</h1> -->
+      <h1 style="text-align:center">高德地图</h1>
     </div>
+
     <div>
       <h1>点击地图</h1>
+
       <div>
         您点击的地址为:{{ address }}
 
@@ -25,7 +29,7 @@
         地址查询<input v-model="list.address" type="text" @blur="changeAddress">
       </div>
     </div>
-    <gaodeMap ref="gaode" :commit-from="list" @msg="msg"/>
+    <gaodeMap ref="gaode" :commit-from="list" @msg="msg" mulMarks/>
   </div>
 </template>
 <script>
