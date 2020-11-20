@@ -9,7 +9,7 @@
 <template>
   <div>
     <div>
-      
+
       <!-- <h1 style="text-align:center" @click="goZZ">点我定位到郑州市</h1> -->
       <h1 style="text-align:center">高德地图</h1>
     </div>
@@ -29,7 +29,7 @@
         地址查询<input v-model="list.address" type="text" @blur="changeAddress">
       </div>
     </div>
-    <gaodeMap ref="gaode" :commit-from="list" @msg="msg" mulMarks/>
+    <gaodeMap ref="gaode" :commit-from="list" mul-marks @msg="msg"/>
   </div>
 </template>
 <script>

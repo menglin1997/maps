@@ -5,10 +5,11 @@
   "author": "'zml'",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js --hot --open",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js --hot --open --host 192.168.0.105",
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue src --fix",
-    "build": "node build/build.js"
+    "build2": "node build/build.js",
+    "build": "webpack --config ./build/webpack.prod.js"
   },
   "dependencies": {
     "animate.css": "^3.7.0",
@@ -42,6 +43,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.22.0",
     "chalk": "^2.0.1",
+    "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
     "eslint": "^4.15.0",
